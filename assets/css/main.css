@@ -5,7 +5,7 @@
       font-family: 'Source Sans Pro', sans-serif;
     }
     body {
-      background: #f9f9f9;
+      background: #ffffff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -43,6 +43,14 @@
       padding: 0.5em;
       object-fit: contain; /* Prevent distortion */
     }
+    .logo {
+      font-size: 0.95em;
+      font-weight: 700;
+      color: #232D4B;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
   .menu-toggle {
   display: none;
@@ -73,6 +81,9 @@
       flex: 1;
       margin-top: 60px;
       flex-wrap: wrap;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
     .content {
       flex: 3;
@@ -123,13 +134,13 @@
     .news-panel {
       flex: 1;
       padding: 2em 1em;
-      border-left: 2px solid #ddd;
+      /* border-left: 2px solid #ddd; */
       min-width: 280px;
     }
     .news-panel h3 {
       margin-bottom: 1em;
       text-transform: uppercase;
-      font-size: large;
+      font-size: normal;
       color: #232D4B;
       letter-spacing: 1px;
     }
@@ -139,7 +150,7 @@
     .news-panel li {
       display: flex;
       align-items: flex-start;
-      font-size: large;
+      font-size: normal;
       margin-bottom: 0.8em;
     }
     .news-date {
@@ -275,8 +286,7 @@
     }
 
     .pages-content {
-      width: 70%;
-      margin: 0 auto;
+      flex: 4;
       padding: 2em;
       min-width: 300px;
       font-size: large;
@@ -380,4 +390,67 @@
   
   .pub-links a:hover {
     color: #0074D9;
+  }
+
+  .collabs-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    margin-top: 2em;
+  }
+
+  .collab-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5em;
+    padding: 1.5em;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+  }
+
+  .collab-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .collab-logo {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #232D4B;
+  }
+
+  .collab-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3em;
+  }
+
+  .collab-name {
+    font-weight: 700;
+    color: #232D4B;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .collab-name:hover {
+    color: #0074D9;
+    text-decoration: underline;
+  }
+
+  .collab-institution {
+    color: #888;
+    font-size: 0.95em;
+  }
+
+  @media screen and (max-width: 768px) {
+    .collabs-list {
+      grid-template-columns: 1fr;
+    }
   }
