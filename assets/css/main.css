@@ -125,6 +125,7 @@
   } 
   .card-img {
       width: 100%;
+      /* flex:.7; */
       max-height: auto;
       object-fit: cover;
       border-radius: 6px;
