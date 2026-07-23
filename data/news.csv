@@ -1,6 +1,5 @@
 date,text_html
-Aug 2026,Welcome Georgia!
-Jun 2026,Paper on visualization design diversity accepted to VIS 26!
-Nov 2025,Two papers on <a href="./files/visanatomy.pdf">semantic labels for SVG charts</a> and <a href="./files/decomposing-d3.pdf">D3 decomposition strategies</a> presented at VIS'25
-Aug 2025,<a href="./pages/people.html">We're hiring!</a>
-Aug 2025,The ViDAR group started @ UVA SDS!
+Aug-26,Welcome Georgia!
+Nov-25,"Two papers on <a href=""./files/visanatomy.pdf"">semantic labels for SVG charts</a> and <a href=""./files/decomposing-d3.pdf"">D3 decomposition strategies</a> presented at VIS'25"
+Aug-25,"<a href=""./pages/people.html"">We're hiring!</a>"
+Aug-25,The ViDAR group started @ UVA SDS!
