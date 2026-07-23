@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualization and Design Augmentation Research Lab</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="../images/logo.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo">
+     <a href="../index.html"><img src="../images/logo.png" alt="Lab Logo"></a>Visualization and Design Augmentation Research Lab
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/research.html">Research</a></li>
+        <li><a href="../pages/people.html">People</a></li>
+        <li><a href="../pages/collaborate.html">Collaborate</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Open navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <div class="layout">
+    <main class="pages-content">
+      <section class="about">
+        <h1>Collaborate With Us</h1>
+
+        <!-- SECTION A: WHO WE WORK WITH -->
+        <div class="about-section">
+          <br>
+          <h3>Who we work with</h3>
+          <p>
+            We study how people design, interpret, and communicate data visually and we're drawn to domains where those questions get hard. 
+            Our best collaborations happen when a domain expert brings deep knowledge of a real, unsolved problem, and we bring research expertise in visualization design, HCI, and evaluation. 
+            <br><br>
+            If your work raises hard questions about how data should be communicated, designed, or how people may understand (or misunderstand) visual data, get in touch! We are always looking for new collaborations and are happy to discuss potential projects.
+          </p>
+        </div>
+
+        <!-- SECTION D: GET IN TOUCH -->
+        <div class="about-section">
+          <h3>Get in touch</h3>
+          <p>
+            Not sure if your project is a fit? Reach out anyway — we're happy to have a conversation. <a href="#" id="contact-email-link">Email us.</a>
+          </p>
+
+          <br><br>
+          <p>
+            <a href="/pages/research.html">See our work →</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-section footer-icons">
+      <p>Follow us on:</p>
+      <a href="https://github.com/UVA-VIDAR-Lab" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://hannahbako.com/" target="_blank" rel="noopener" aria-label="Hannah Bako">Hannah Bako</a>
+    </div>
+    <div class="footer-section">
+      <p>School of Data Science<br>University of Virginia<br>Charlottesville, VA</p>
+    </div>
+    <div class="footer-section">
+      <p>&copy; 2026 Visualization and Design Augmentation Research Lab<br>Last updated: May 2026</p>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const link = document.getElementById('contact-email-link');
+      if (!link) return;
+
+      const username = ['znf3ft'];
+      const domain = ['virginia', 'edu'];
+      const email = `${username[0]}@${domain.join('.')}`;
+
+    
+      link.setAttribute('href', `mailto:${email}`);
+      
+
+      link.setAttribute('aria-label', email);
+    });
+  </script>
+</body>
+</html>

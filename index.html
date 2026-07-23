@@ -17,9 +17,9 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="pages/team.html">Team</a></li>
-        <li><a href="pages/publications.html">Publications</a></li>
-        <li><a href="pages/join.html">Join Us</a></li>
+        <li><a href="pages/research.html">Research</a></li>
+        <li><a href="pages/people.html">People</a></li>
+        <li><a href="pages/collaborate.html">Collaborate</a></li>
       </ul>
     </nav>
     <button class="menu-toggle" aria-label="Open navigation">
@@ -33,64 +33,44 @@
         <h1 style="color: #232D4B;">About Us</h1>
         <br>
         <p>
-          The <u><b>Vi</b></u>sualization and <u><b>D</b></u>esign <u><b>A</b></u>ugmentation <u><b>R</b></u>esearch Lab investigates how automation can be used to augment
+          The <u><b>Vi</b></u>sualization and <u><b>D</b></u>esign <u><b>A</b></u>ugmentation <u><b>R</b></u>esearch Lab studies visualization design artifacts 
+          (i.e., the charts, diagrams, and visual representations that communicate data) as the central objects of our research. We investigate how designers 
+          produce them, how existing artifacts inspire new designs, how machines can learn from and generate them, and how people interpret them. 
+          Across these four directions, our work builds toward a unified understanding of how design knowledge lives inside visualizations and flows through the design process.
+          <!-- Lab investigates how automation can be used to augment
           human creativity in the design process, using data visualization design as the primary medium for our work.
-          We blend human-centered design, empirical research, and tool development to study design processes, and create novel systems that scaffold creative work.
+          We blend human-centered design, empirical research, and tool development to study design processes, and create novel systems that scaffold creative work. -->
         </p>
       </section>
 
       <h2 style="padding: 5px; color: #232D4B;">Research Themes</h2>
       <section class="projects">
-        <div class="card" onclick="location.href='projects/example-aided-design.html';">
-          <h3>Example-Aided Visualization Design Ideation</h3>
-          <p>Investigating how visualization designers repurpose existing examples to inspire new designs.</p>
-          <img src="images/backgrounds/nature-of-synthesis.png" alt="Project 2" class="card-img" style="padding: 5px;">
-        </div>
-      
-        <div class="card" onclick="location.href='projects/design-knowledge.html';">
-          <h3>Visualization Design Knowledge & Representations</h3>
-          <p>Expanding our understanding of visualization design knowledge through formal representations and metrics that enable computational reasoning over design spaces.</p>
-          <img src="images/backgrounds/evaluation-background.png" alt="Project 3" class="card-img" style="padding: 5px;">
-        </div>
-
-        <div class="card" onclick="location.href='projects/intelligent-systems.html';">
-          <h3>Design support Tools</h3>
-          <p>Creating intelligent co-design tools that adapt to evolving designer goals without replacing the designer's role.</p>
-          <!-- <img src="images/backgrounds/intelligent-background.png" alt="Project 4" class="card-img" style="padding: 5px;"> -->
-          <video src="images/backgrounds/intelligent-background.mp4" alt="Project 4" class="card-img" style="padding: 5px;" autoplay muted loop></video>
-        </div>
-
-        <div class="card" onclick="location.href='projects/programming-support.html';">
-          <h3>Support for Visualization Programming</h3>
-          <p>Studying how people write visualization code and developing tools to support expressive prototyping.</p>
-          <img src="images/papers/mirny.png" alt="Project 1" class="card-img" style="padding: 5px;">
-        </div>
+        <div id="research-diagram"></div>
       </section>
     </main>
 
     <aside class="news-panel">
       <h3>Recent News</h3>
       <ul>
-        <li><span class="news-date">Nov 2025</span> Two papers on diverse real-world SVG charts and D3 decomposition strategies presented at VIS'25 </li>
-        <li><span class="news-date">Aug 2025</span> <a href="./pages/join.html">We're hiring!</a></li>
-        <li><span class="news-date">Aug 2025</span> The ViDAR group started @ UVA SDS!</li>
+        <li><span class="news-date">Loading…</span></li>
       </ul>
     </aside>
   </div>
 
   <footer>
     <div class="footer-section footer-icons">
-		<p>Follow us on:</p>
+      <p>Follow us on:</p>
       <a href="https://github.com/UVA-VIDAR-Lab" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <!-- <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+      <a href="https://hannahbako.com/" target="_blank" rel="noopener" aria-label="Hannah Bako">Hannah Bako</a>
     </div>
     <div class="footer-section">
       <p>School of Data Science<br>University of Virginia<br>Charlottesville, VA</p>
     </div>
     <div class="footer-section">
-      <p>&copy; 2026 Visualization and Design Augmentation Research Lab<br>Last updated: Jan 2026</p>
+      <p>&copy; 2026 Visualization and Design Augmentation Research Lab<br>Last updated: May 2026</p>
     </div>
   </footer>
   <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/research-diagram.js"></script>
 </body>
 </html>

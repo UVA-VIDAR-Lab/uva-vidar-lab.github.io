@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualization and Design Augmentation Research Lab</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="../images/logo.png" type="image/x-icon">
+  <style>
+    .research-container {
+      display: flex;
+      gap: 2em;
+      margin-top: 2em;
+    }
+    .filter-sidebar {
+      flex: 0 0 250px;
+      padding: 1.5em;
+      background: #f8f9fa;
+      border-radius: 8px;
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+    .filter-group {
+      margin-bottom: 2em;
+    }
+    .filter-group h4 {
+      font-size: 0.9em;
+      text-transform: uppercase;
+      color: #232D4B;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 1em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5em;
+    }
+    .filter-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.7em;
+      font-size: 0.95em;
+    }
+    .filter-item input[type="checkbox"] {
+      margin-right: 0.7em;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: #1a73e8;
+    }
+    .filter-item label {
+      cursor: pointer;
+      flex: 1;
+      color: #232D4B;
+    }
+    .filter-count {
+      font-size: 0.85em;
+      color: #888;
+      margin-left: auto;
+    }
+    .clear-filters {
+      background: #f0f4fa;
+      border: 1px solid #ddd;
+      color: #232D4B;
+      padding: 0.7em 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      width: 100%;
+      margin-top: 1.5em;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .clear-filters:hover {
+      background: #e3eafc;
+    }
+    .publications-container {
+      flex: 1;
+      min-width: 0;
+    }
+    .pub-card {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 2.5em;
+      padding-bottom: 2em;
+      border-bottom: 1px solid #eee;
+    }
+    .pub-card:last-child {
+      border-bottom: none;
+    }
+    .pub-img {
+      flex: 0 0 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #f0f4fa;
+    }
+    .pub-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .pub-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #232D4B;
+      margin-bottom: 0.5em;
+      line-height: 1.4;
+    }
+    .pub-authors {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 0.4em;
+      line-height: 1.4;
+    }
+    .pub-venue {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 0.3em;
+    }
+    .pub-meta {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 0.8em;
+      font-size: 0.85em;
+    }
+    .pub-theme, .pub-year {
+      display: inline-block;
+      background: #e3eafc;
+      color: #232D4B;
+      padding: 0.3em 0.8em;
+      border-radius: 12px;
+    }
+    .pub-links {
+      display: flex;
+      gap: 1.2em;
+      margin-top: 0.8em;
+    }
+    .pub-links a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      transition: color 0.2s;
+    }
+    .pub-links a:hover {
+      color: #0d47a1;
+    }
+    .pub-links i {
+      font-size: 0.9em;
+    }
+    .hidden {
+      display: none;
+    }
+    .filter-status {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 1.5em;
+      padding: 0.8em;
+      background: #fff;
+      border-radius: 4px;
+      border-left: 3px solid #1a73e8;
+    }
+    .filter-status a {
+      color: #1a73e8;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .filter-status a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .research-container {
+        flex-direction: column;
+      }
+      .filter-sidebar {
+        flex: 1;
+        position: static;
+      }
+      .pub-card {
+        flex-direction: column;
+      }
+      .pub-img {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+     <a href="../index.html"><img src="../images/logo.png" alt="Lab Logo"></a> Visualization and Design Augmentation Research Lab
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/research.html">Research</a></li>
+        <li><a href="../pages/people.html">People</a></li>
+        <li><a href="../pages/collaborate.html">Collaborate</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Open navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <div class="layout">
+    <main class="pages-content">
+      <h1>Research & Publications</h1>
+      <p style="color: #666; margin-bottom: 1.5em;">Explore our work across three research themes. Use the filters to find papers by theme, year, or venue.</p>
+
+      <div class="research-container">
+    
+        <!-- PUBLICATIONS -->
+        <div class="publications-container">
+          <div class="pub-loading">Loading publications…</div>
+        </div>
+
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar">
+          <div class="filter-group">
+            <h4>Research Theme</h4>
+          </div>
+
+          <div class="filter-group">
+            <h4>Year</h4>
+          </div>
+
+          <div class="filter-group">
+            <h4>Venue</h4>
+          </div>
+
+          <button class="clear-filters" id="clear-filters">Clear all filters</button>
+          <div class="filter-status" id="filter-status" style="display: none;"></div>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-section footer-icons">
+      <p>Follow us on:</p>
+      <a href="https://github.com/UVA-VIDAR-Lab" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://hannahbako.com/" target="_blank" rel="noopener" aria-label="Hannah Bako">Hannah Bako</a>
+    </div>
+    <div class="footer-section">
+      <p>School of Data Science<br>University of Virginia<br>Charlottesville, VA</p>
+    </div>
+    <div class="footer-section">
+      <p>&copy; 2026 Visualization and Design Augmentation Research Lab<br>Last updated: May 2026</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

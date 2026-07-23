@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualization and Design Augmentation Research Lab</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="../images/logo.png" type="image/x-icon">
+  <style>
+    .research-container {
+      display: flex;
+      gap: 2em;
+      margin-top: 2em;
+    }
+    .filter-sidebar {
+      flex: 0 0 250px;
+      padding: 1.5em;
+      background: #f8f9fa;
+      border-radius: 8px;
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+    .filter-group {
+      margin-bottom: 2em;
+    }
+    .filter-group h4 {
+      font-size: 0.9em;
+      text-transform: uppercase;
+      color: #232D4B;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 1em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5em;
+    }
+    .filter-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.7em;
+      font-size: 0.95em;
+    }
+    .filter-item input[type="checkbox"] {
+      margin-right: 0.7em;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: #1a73e8;
+    }
+    .filter-item label {
+      cursor: pointer;
+      flex: 1;
+      color: #232D4B;
+    }
+    .filter-count {
+      font-size: 0.85em;
+      color: #888;
+      margin-left: auto;
+    }
+    .clear-filters {
+      background: #f0f4fa;
+      border: 1px solid #ddd;
+      color: #232D4B;
+      padding: 0.7em 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+      width: 100%;
+      margin-top: 1.5em;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .clear-filters:hover {
+      background: #e3eafc;
+    }
+    .publications-container {
+      flex: 1;
+      min-width: 0;
+    }
+    .pub-card {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 2.5em;
+      padding-bottom: 2em;
+      border-bottom: 1px solid #eee;
+    }
+    .pub-card:last-child {
+      border-bottom: none;
+    }
+    .pub-img {
+      flex: 0 0 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #f0f4fa;
+    }
+    .pub-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .pub-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #232D4B;
+      margin-bottom: 0.5em;
+      line-height: 1.4;
+    }
+    .pub-authors {
+      font-size: 0.95em;
+      color: #555;
+      margin-bottom: 0.4em;
+      line-height: 1.4;
+    }
+    .pub-venue {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 0.3em;
+    }
+    .pub-meta {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 0.8em;
+      font-size: 0.85em;
+    }
+    .pub-theme, .pub-year {
+      display: inline-block;
+      background: #e3eafc;
+      color: #232D4B;
+      padding: 0.3em 0.8em;
+      border-radius: 12px;
+    }
+    .pub-links {
+      display: flex;
+      gap: 1.2em;
+      margin-top: 0.8em;
+    }
+    .pub-links a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      transition: color 0.2s;
+    }
+    .pub-links a:hover {
+      color: #0d47a1;
+    }
+    .pub-links i {
+      font-size: 0.9em;
+    }
+    .hidden {
+      display: none;
+    }
+    .filter-status {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 1.5em;
+      padding: 0.8em;
+      background: #fff;
+      border-radius: 4px;
+      border-left: 3px solid #1a73e8;
+    }
+    .filter-status a {
+      color: #1a73e8;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .filter-status a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .research-container {
+        flex-direction: column;
+      }
+      .filter-sidebar {
+        flex: 1;
+        position: static;
+      }
+      .pub-card {
+        flex-direction: column;
+      }
+      .pub-img {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+     <a href="../index.html"><img src="../images/logo.png" alt="Lab Logo"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../pages/research.html">Research</a></li>
+        <li><a href="../pages/people.html">People</a></li>
+        <li><a href="../pages/collaborate.html">Collaborate</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Open navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <div class="layout">
+    <main class="pages-content">
+      <h1>Research & Publications</h1>
+      <p style="color: #666; margin-bottom: 1.5em;">Explore our work across three research themes. Use the filters to find papers by theme, year, or venue.</p>
+
+      <div class="research-container">
+    
+        <!-- PUBLICATIONS -->
+        <div class="publications-container">
+          <!-- DESIGN IDEATION & CREATIVE PROCESS -->
+          <div class="pub-card" data-theme="ideation" data-year="2024" data-venue="vis">
+            <img src="../images/papers/EidOverview.png" alt="How examples shape visualization design outcomes" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">Unveiling How Examples Shape Visualization Design Outcomes</div>
+              <div class="pub-authors">Hannah K. Bako, Xinyi Liu, Grace Ko, Hyemi Song, Leilani Battle & Zhicheng Liu</div>
+              <div class="pub-venue">IEEE Visualization and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Design Ideation</span>
+                <span class="pub-year">2024</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/EID_Part_II.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://osf.io/sbp2k/wiki/home/" target="_blank" title="Supplementary"><i class="fas fa-box-archive"></i> Supplementary</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub-card" data-theme="ideation" data-year="2022" data-venue="vis">
+            <img src="../images/papers/examples.jpeg" alt="How designers find and use data visualization examples" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">Understanding how Designers Find and Use Data Visualization Examples</div>
+              <div class="pub-authors">Hannah K. Bako, Xinyi Liu, Leilani Battle, & Zhicheng Liu</div>
+              <div class="pub-venue">IEEE Visualizations and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Design Ideation</span>
+                <span class="pub-year">2022</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/Examples_In_Design___Interview_Study (1).pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://osf.io/cuqbt/?view_only=aa0ba363ed934454ac0cb356b84af8013" target="_blank" title="Supplementary"><i class="fas fa-box-archive"></i> Supplementary</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- VISUALIZATION DESIGN KNOWLEDGE -->
+          <div class="pub-card" data-theme="knowledge" data-year="2025" data-venue="vis">
+            <img src="../images/papers/visanatomy.png" alt="VisAnatomy: An SVG chart corpus with semantic labels" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">VisAnatomy: An SVG Chart Corpus with Fine-Grained Semantic Labels</div>
+              <div class="pub-authors">Chen Chen, Hannah K. Bako, Peihong Yu, John Hooker, Jeffrey Joyal, Simon C. Wang, Samuel Kim, Jessica Wu, Aoxue Ding, Lara Sandeep, Alex Chen, Chayanika Sinha, Zhicheng Liu</div>
+              <div class="pub-venue">IEEE Visualization and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Design Knowledge</span>
+                <span class="pub-year">2025</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/visanatomy.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://visanatomy.github.io/" target="_blank" title="Gallery"><i class="fas fa-images"></i> Gallery</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub-card" data-theme="knowledge" data-year="2024" data-venue="vis">
+            <img src="../images/papers/SemanticProfiling_VIS24.png" alt="Evaluating semantic profiling abilities of LLMs for data visualization" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">Evaluating the Semantic Profiling Abilities of LLMs for Natural Language Utterances in Data Visualization</div>
+              <div class="pub-authors">Hannah K. Bako, Arshnoor Buthani, Xinyi Liu, Kwesi Cobbina & Zhicheng Liu</div>
+              <div class="pub-venue">IEEE Visualization and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Design Knowledge</span>
+                <span class="pub-year">2024</span>
+              </div>
+              <div class="pub-links">
+                <a href="/files/evaluate-llm.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://github.com/hdi-umd/Semantic_Profiling_LLM_Evaluation" target="_blank" title="Code"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- VISUALIZATION DEVELOPMENT & DISCOVERY -->
+          <div class="pub-card" data-theme="development" data-year="2025" data-venue="vis">
+            <img src="../images/papers/decomposing-d3.png" alt="How Observable users decompose D3 code" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">How do Observable Users Decompose D3 Code? An Exploratory Study</div>
+              <div class="pub-authors">Melissa Lin, Heer Patel, Medina Lamkin, Hannah K. Bako, Leilani Battle</div>
+              <div class="pub-venue">IEEE Visualization and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Development & Discovery</span>
+                <span class="pub-year">2025</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/decomposing-d3.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://osf.io/sudb8/?view_only=cc72bdc685804e478852a96297328eb8" target="_blank" title="Supplementary"><i class="fas fa-box-archive"></i> Supplementary</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub-card" data-theme="development" data-year="2023" data-venue="iui">
+            <img src="../images/papers/mirny.png" alt="User-driven support for visualization prototyping in D3" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">User-Driven Support for Visualization Prototyping in D3</div>
+              <div class="pub-authors">Hannah K. Bako, Alisha Varma, Anuoluwapo Faboro, Mahreen Haider, Favour Nerrise, Bissaka Kenah, John Dickerson, & Leilani Battle</div>
+              <div class="pub-venue">ACM Conference on Intelligent User Interfaces</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Development & Discovery</span>
+                <span class="pub-year">2023</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/mirny.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="/videos/Final-Demo-cut.mp4" target="_blank" title="Video"><i class="fas fa-video"></i> Video</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pub-card" data-theme="development" data-year="2022" data-venue="vis">
+            <img src="../images/papers/viz_collage.png" alt="Streamlining visualization authoring in D3 through templates" class="pub-img">
+            <div class="pub-info">
+              <div class="pub-title">Streamlining Visualization Authoring in D3 Through User-Driven Templates</div>
+              <div class="pub-authors">Hannah K. Bako, Alisha Varma, Anuoluwapo Faboro, Mahreen Haider, Favour Nerrise, Bissaka Kenah, & Leilani Battle</div>
+              <div class="pub-venue">IEEE Visualizations and Visual Analytics Conference</div>
+              <div class="pub-meta">
+                <span class="pub-theme">Development & Discovery</span>
+                <span class="pub-year">2022</span>
+              </div>
+              <div class="pub-links">
+                <a href="../files/streamlining.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i> PDF</a>
+                <a href="https://osf.io/k58bp/?view_only=72fa3798bbaa4263b5ad662b26a70cb3" target="_blank" title="Supplementary"><i class="fas fa-box-archive"></i> Supplementary</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER SIDEBAR -->
+        <aside class="filter-sidebar">
+          <div class="filter-group">
+            <h4>Research Theme</h4>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-ideation" value="ideation" class="theme-filter">
+              <label for="filter-ideation">Design Ideation</label>
+              <span class="filter-count">2</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-knowledge" value="knowledge" class="theme-filter">
+              <label for="filter-knowledge">Design Knowledge</label>
+              <span class="filter-count">2</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-development" value="development" class="theme-filter">
+              <label for="filter-development">Development & Discovery</label>
+              <span class="filter-count">3</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Year</h4>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-2025" value="2025" class="year-filter">
+              <label for="filter-2025">2025</label>
+              <span class="filter-count">2</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-2024" value="2024" class="year-filter">
+              <label for="filter-2024">2024</label>
+              <span class="filter-count">2</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-2023" value="2023" class="year-filter">
+              <label for="filter-2023">2023</label>
+              <span class="filter-count">1</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-2022" value="2022" class="year-filter">
+              <label for="filter-2022">2022</label>
+              <span class="filter-count">2</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Venue</h4>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-vis" value="vis" class="venue-filter">
+              <label for="filter-vis">IEEE VIS</label>
+              <span class="filter-count">4</span>
+            </div>
+            <div class="filter-item">
+              <input type="checkbox" id="filter-iui" value="iui" class="venue-filter">
+              <label for="filter-iui">ACM IUI</label>
+              <span class="filter-count">1</span>
+            </div>
+          </div>
+
+          <button class="clear-filters" id="clear-filters">Clear all filters</button>
+          <div class="filter-status" id="filter-status" style="display: none;"></div>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-section footer-icons">
+      <p>Follow us on:</p>
+      <a href="https://github.com/UVA-VIDAR-Lab" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://hannahbako.com/" target="_blank" rel="noopener" aria-label="Hannah Bako">Hannah Bako</a>
+    </div>
+    <div class="footer-section">
+      <p>School of Data Science<br>University of Virginia<br>Charlottesville, VA</p>
+    </div>
+    <div class="footer-section">
+      <p>&copy; 2026 Visualization and Design Augmentation Research Lab<br>Last updated: May 2026</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const allCards = document.querySelectorAll('.pub-card');
+    const themeFilters = document.querySelectorAll('.theme-filter');
+    const yearFilters = document.querySelectorAll('.year-filter');
+    const venueFilters = document.querySelectorAll('.venue-filter');
+    const clearButton = document.getElementById('clear-filters');
+    const filterStatus = document.getElementById('filter-status');
+
+    function applyFilters() {
+      const activeThemes = Array.from(themeFilters).filter(cb => cb.checked).map(cb => cb.value);
+      const activeYears = Array.from(yearFilters).filter(cb => cb.checked).map(cb => cb.value);
+      const activeVenues = Array.from(venueFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+      let hiddenCount = 0;
+      allCards.forEach(card => {
+        const cardTheme = card.dataset.theme;
+        const cardYear = card.dataset.year;
+        const cardVenue = card.dataset.venue;
+
+        const matchesTheme = activeThemes.length === 0 || activeThemes.includes(cardTheme);
+        const matchesYear = activeYears.length === 0 || activeYears.includes(cardYear);
+        const matchesVenue = activeVenues.length === 0 || activeVenues.includes(cardVenue);
+
+        if (matchesTheme && matchesYear && matchesVenue) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+          hiddenCount++;
+        }
+      });
+
+      // Update filter status
+      const totalFiltersActive = activeThemes.length + activeYears.length + activeVenues.length;
+      if (totalFiltersActive > 0) {
+        filterStatus.style.display = 'block';
+        filterStatus.innerHTML = `${hiddenCount} of 7 publications hidden by filters. <a href="#" onclick="document.getElementById('clear-filters').click(); return false;">Clear all</a>`;
+      } else {
+        filterStatus.style.display = 'none';
+      }
+    }
+
+    themeFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+    yearFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+    venueFilters.forEach(filter => filter.addEventListener('change', applyFilters));
+
+    clearButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      themeFilters.forEach(cb => cb.checked = false);
+      yearFilters.forEach(cb => cb.checked = false);
+      venueFilters.forEach(cb => cb.checked = false);
+      filterStatus.style.display = 'none';
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

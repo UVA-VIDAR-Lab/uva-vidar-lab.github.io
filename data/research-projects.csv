@@ -1,0 +1,10 @@
+id,axis,ring,offset,status,label,year,desc,url
+ d3-authoring,production,inner,-18,past,D3 Authoring Suite,2022–23,Authoring tools and templates for producing D3 visualizations.,projects/programming-support.html
+ d3-decomp,production,mid,16,past,D3 Code Decomposition,2025,Study of how designers decompose and navigate D3 source code.,projects/programming-support.html
+ design-ideation,production,outer,0,current,Design Ideation Research,ongoing,Two active projects examining ideation logs and design intent.,#
+ examples-in-design,example,mid,-25,past,Examples in Design,2022,Interview study on how designers use examples during the visualization design process.,projects/example-aided-design.html
+ examples-outcomes,example,outer,0,past,Examples Influence on Design Outcomes,2024,Controlled study measuring how reference examples influence final visualization designs.,projects/example-aided-design.html
+ forage,example,inner,50,current,Forage,ongoing,Dataset-based visualization retrieval system enabling example-aided design at scale.,#
+ llm-profiling,machines,inner,14,past,LLM Semantic Profiling,2024,Probing large language models to understand how they encode and represent visualization semantics.,files/evaluate-llm.pdf
+ visanatomy,machines,mid,-14,past,VisAnatomy,2025,Structured corpus of visualization components built to support machine learning on vis artifacts.,files/visanatomy.pdf
+ diversity-design,interpretation,mid,-30,current,Diversity in Design,ongoing,Examining diversity metrics in visualization design; how design artifacts represent and are perceived across groups.,#
