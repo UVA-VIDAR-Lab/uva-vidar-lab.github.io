@@ -95,6 +95,9 @@
     .about {
       margin-bottom: 3em;
     }
+    #joinus {
+      scroll-margin-top: 60px;
+    }
     .alumni-list {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
